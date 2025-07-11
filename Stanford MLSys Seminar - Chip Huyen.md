@@ -10,7 +10,17 @@ Let's dive into some of the key takeaways
 1. [ML in Research vs. Production: A Tale of Two Worlds](#part-1)
 2. [ML Production Myths Debunked](#part-2)
 3. [The Iterative ML Process](#part-3)
-4. 
+
+    3.1. [A Blueprint for ML](#part-3.1)
+
+    3.2. [Understanding the Fluid Roles: Data Science vs. ML Engineering](#part-3.2)
+
+    3.3. [The Iterative Process Stages: A Deep Dive](#part-3.3)
+
+    3.4. [Key Insights on ML Engineering](#part-3.4)
+
+4. [Phases of Adoption](#part-4)
+5. [Q&A Highlights: Deeper Dives](#part-5)
 
 ## Abstract <a name="abstract"></a>
 This talk covers what it means to operationalize ML models. It starts by analyzing the difference between ML in research vs. in production, ML systems vs. traditional software, as well as myths about ML production.
@@ -91,33 +101,75 @@ Chip highlights Uber as an example where data scientists generate business insig
 
 Here's a more detailed breakdown of each stage and what happens within them:
 
-1.  **Project Scoping:**
-    *   This is where it all begins! You **plan the budget, manage expectations**, and define the problem you're trying to solve. Chip stresses that an ML system **has to solve a problem**; otherwise, it just creates more maintenance and costs. Don't jump into complex algorithms if a simple heuristic can get you "50% of the way there".
+1.  **Project Management:**
+> - scoping
+> - goals
+> - objectives
+> - constraints
+> - budget
+> - managing expectations
+
+This is where it all begins! You **plan the budget, manage expectations**, and define the problem you're trying to solve. Chip stresses that an ML system **has to solve a problem**; otherwise, it just creates more maintenance and costs. Don't jump into complex algorithms if a simple heuristic can get you "50% of the way there".
 
 2.  **Data Management:**
-    *   This stage is all about the data itself. It involves **collecting data, tracking data lineage** (where it comes from), deciding **how to store data** (e.g., data lake vs. data warehouse), and **ingesting** it. This can involve query engines like ElasticSearch or a combination of tools.
+> - collect
+> - process
+> - control
+> - store
+> - ingest
 
-3.  **ML Development:**
-    *   Once you have the data, you **create datasets** for training, which includes **labeling, partitioning, sampling, and slicing**.
-    *   Then comes **model selection, training, and evaluation**. If you're "unlucky," you'll deal with distributed training (which can be "still painful," especially with Python, though companies like Uber and OpenAI are doing great work in this area).
-    *   Models are then **optimized and compressed** for deployment.
+This stage is all about the data itself. It involves **collecting data, tracking data lineage** (where it comes from), deciding **how to store data** (e.g., data lake vs. data warehouse), and **ingesting** it. This can involve query engines like ElasticSearch or a combination of tools.
 
-4.  **Deployment & Serving:**
-    *   **Deploying** means putting your application on some hardware, while **serving** means responding to user requests. In serverless environments, these terms are often used interchangeably.
-    *   This stage also involves **initial detection and handling of data drift** (when input data changes over time).
-    *   You'll define **releasing strategies** and **validate your deployments**.
+3.  **Model Development:**
+> - creating datasets
+> - labeling
+> - feature engineering 
+> - model selection 
+> - training
+> - distributed training
+> - evaluation 
+> - model optimization 
+
+* Once you have the data, you **create datasets** for training, which includes **labeling, partitioning, sampling, and slicing**.
+*  Then comes **model selection, training, and evaluation**. If you're "unlucky," you'll deal with distributed training (which can be "still painful," especially with Python, though companies like Uber and OpenAI are doing great work in this area).
+*  Models are then **optimized and compressed** for deployment.
+
+4.  **Deployment**
+> - deploying
+> - serving
+> - detecting and handling data drift
+> - releasing strategies 
+> - deployment validation 
+
+*   **Deploying** means putting your application on some hardware, while **serving** means responding to user requests. In serverless environments, these terms are often used interchangeably.
+*   This stage also involves **initial detection and handling of data drift** (when input data changes over time).
+*   You'll define **releasing strategies** and **validate your deployments**.
 
 5.  **Monitoring & Maintenance:**
-    *   Chip feels this stage is "still very much underdeveloped for machine learning".
-    *   However, she believes that **many ML engineering problems can be solved using existing tools from the DevOps world**.
-    *   **Monitoring is absolutely crucial**. Since you won't have real-time labels for accuracy, you need to monitor **proxies** like conversion rates or click-through rates, but be careful as these can be misleading.
-    *   Define **metrics for both input data** (e.g., expected ranges, fill rates) and **model output** (e.g., shifts in predicted class distributions). Tools like Grafana or New Relic can help.
-    *   **Implement tracing with IDs** to track requests through different system components, making debugging much easier.
-    *   Ensure **feature engineering pipelines for training and production are identical** to avoid subtle but significant bugs. Logging input systems can also be invaluable for future training data.
+> - logging
+> - tagging
+> - tracing 
+> - metrics
+> - alerts 
+> - updates & rollbacks
+> - postmortems
 
-6.  **Business Analysis:**
-    *   This final stage focuses on **integrating and managing the business impact** of the ML system.
-    *   It deals with **business analysis, user experience, and governance** (e.g., who has access to what data).
+*   Chip feels this stage is "still very much underdeveloped for machine learning".
+*   However, she believes that **many ML engineering problems can be solved using existing tools from the DevOps world**.
+*   **Monitoring is absolutely crucial**. Since you won't have real-time labels for accuracy, you need to monitor **proxies** like conversion rates or click-through rates, but be careful as these can be misleading.
+*   Define **metrics for both input data** (e.g., expected ranges, fill rates) and **model output** (e.g., shifts in predicted class distributions). Tools like Grafana or New Relic can help.
+*   **Implement tracing with IDs** to track requests through different system components, making debugging much easier.
+*   Ensure **feature engineering pipelines for training and production are identical** to avoid subtle but significant bugs. Logging input systems can also be invaluable for future training data.
+
+6.  **Integrating ML into business**
+> - business analysis
+> - user experience
+> - governance 
+> - team structure
+> - best practices
+
+*   This final stage focuses on **integrating and managing the business impact** of the ML system.
+*   It deals with **business analysis, user experience, and governance** (e.g., who has access to what data).
 
 ### 3.4. Key Insights on ML Engineering <a name="part-3.4"></a>
 
@@ -150,21 +202,63 @@ And the overarching principle of good ML system design? It has to **solve a prob
 >9. It's versioned
 >10. It's documented
 
-### Q&A Highlights: Deeper Dives <a name="part-5"></a>
+### 5. Q&A Highlights: Deeper Dives <a name="part-5"></a>
 
-The Q&A session brought up some great points:
+Here is a more detailed Q&A section from the seminar, drawing on the provided transcript.
 
-*   **Deployment in Medicine:** While deploying can be easy, specific applications like medicine present unique challenges. These include:
-    *   **Practical Challenges:** Getting and annotating patient data is hard due to **cost, slowness, privacy concerns**, and the need for domain expertise. Medical data also comes in tricky formats (large images like CT scans, graph data for drug discovery, irregular time-series data).
-    *   **Ethical Challenges:** Interpretability and fairness are **extremely important** in medicine, as people need to trust AI systems, especially when lives are at stake.
-*   **Dealing with Concept Drift/Distributional Shift:** This is a major bottleneck!
-    *   **Monitor, Monitor, Monitor:** You **must monitor** your models. But you can't just check accuracy because you won't have real-time labels. Instead, use **proxies** like conversion rates or click-through rates, but be aware these can be misleading (e.g., Google's search engine change initially lowered click rates but increased revenue due to better relevance).
-    *   **Define Metrics:** Define metrics for both **input data** (e.g., expected ranges for features, changes in fill rates) and **model output** (e.g., shifts in predicted class distributions). Existing tools from Devops can help monitor these metrics.
-    *   **Tracing:** Implement tracing with IDs to track requests through different system components for easier debugging when things go wrong.
-    *   **Consistent Feature Engineering:** Ensure that feature engineering pipelines for training and production are **identical** to avoid subtle but significant bugs. Logging input systems can also be useful for future training data.
-*   **Getting Researchers to Care About Production Metrics:** This is an active area of research!
-    *   **Adaptive Leaderboards:** Instead of a single leaderboard for performance, create **adaptive leaderboards** where users can specify the importance of different variables like performance, interpretability, and inference costs.
-    *   **Multi-Dimensional Benchmarks:** Initiatives like **MLPerf** are crucial for comparing hardware efficiency, training/inference times, and even dollar costs on cloud providers.
-*   **ML Engineers & System Knowledge:** The idea that ML engineers don't need to know about the underlying system is a point of contention. Chip agrees they should, citing the **"hardware lottery"** – where research ideas gain popularity not because they're inherently better, but because they're better suited to existing hardware. Companies like Apple and Nvidia are working to bridge this gap by developing both chips and applications.
+***
 
-Chip wrapped up by mentioning that the course videos might be available online and publicly, as she's a huge believer in open source!
+### Q&A Session with Chip Huyen
+
+**1. Is deployment always easy, or are there settings where it is typically harder?**
+
+Chip Huyen explains that whether deployment is easy or hard **depends heavily on the specific application** and case. She elaborated on the challenges in the medical field:
+
+*   **Practical Challenges**:
+    *   **Data Annotation:** Obtaining and labeling patient data is difficult because it requires **domain expertise**, is **slow**, and demands **strict privacy** (often requiring on-site work or extensive training for annotators).
+    *   **Data Format:** Medical data comes in many complex formats. While textual data might be easier to handle than image data in general production, medical images (like CT scans) can be **extremely large**, sometimes not even fitting into memory. Data can also be in graph formats (e.g., for drug discovery).
+    *   **Time Frame:** Tracking patient data as time series is complex because patient visits are irregular, making it hard to quantify and compare different time intervals (e.g., two years versus two weeks).
+*   **Ethical Challenges**:
+    *   **Interpretability and Fairness:** These are **extremely important** in medicine because they directly deal with people's lives. Chip highlighted a tweet by Geoffrey Hinton questioning whether an AI surgeon with a 90% cure rate but no explanation is preferable to a doctor with an 80% cure rate who can explain their decisions, emphasizing the ongoing challenge of public trust in AI systems.
+
+**2. How do you deal with concept drift, distributional shift, and updating models in production?**
+
+Chip identifies this as a **major bottleneck** in Machine Learning (ML). She offers several suggestions:
+
+*   **Monitor Models Actively:**
+    *   It's **tricky to monitor based on accuracy** in production because labeled data is often unavailable in real-time.
+    *   If a system is tied directly to business goals (e.g., recommendation systems), you might get real-time feedback (like click-through rates or conversion rates). However, **proxies can be misleading**; for example, Google's shift from a search engine to a question-answering engine initially caused a drop in click-through rates for advertisers, but ultimately increased revenue because the results were more relevant, leading to higher user satisfaction.
+    *   Define **different metrics** for both data and models. For data, you can define expected ranges for input data and monitor when data falls outside these ranges (e.g., a field usually 90% filled now only 50% filled). For models, monitor changes in output distributions (e.g., a class typically predicted 90% of the time now drops to 2%).
+    *   Existing tools from the DevOps world (like New Relic) can be adapted for monitoring these metrics.
+*   **Implement Tracing:**
+    *   In systems with many components, tracing allows you to **track a user's input through different steps** of the system using an ID, which is crucial for debugging when something goes wrong.
+    *   This also applies during ML model development, enabling you to step through the system and see the expected output at each stage, even with single inputs.
+*   **Ensure Feature Engineering Consistency:**
+    *   A common source of bugs arises because **feature engineering pipelines often differ between training and deployment** environments. In training, it's typically done in batch, while in deployment, it's done per sample.
+    *   It is critical to **ensure that the feature engineering process yields the exact same output** in both production and training environments. Logging input systems can be very useful for this, and this logged data can even be used as new training data for future model iterations.
+
+**3. How can we encourage ML researchers to prioritize metrics like fairness and interpretability over just top-1 accuracy?**
+
+Chip notes that this is an **active area of work** in the research community. She suggests:
+
+*   **Adaptive Utility Leaderboards:**
+    *   Researchers are often motivated by leaderboards and achieving "state-of-the-art" (SOTA) results.
+    *   Instead of a single leaderboard focused solely on performance, there should be **adaptive leaderboards where users can specify the importance of different variables** (e.g., performance, interpretability, inference costs).
+    *   She mentions work by Cowen and Danjerovsky on "critical NLP leaderboards" that propose using **absolute functions** to create a score based on the importance of different variables.
+*   **Benchmarking Beyond Accuracy:**
+    *   She highlights benchmarks like **MLPerf**, which focuses on hardware efficiency for both training and inference, as well as dollar costs on cloud providers. These types of benchmarks encourage a broader view of model utility beyond just accuracy.
+    *   Chip also mentions ongoing efforts at Facebook (DinoBench) to measure models on different criteria by shipping model weights and outputting various metrics.
+
+**4. Should ML engineers have knowledge of the underlying system, including hardware and software constraints?**
+
+Chip strongly agrees with this point, calling it a **"great point"**.
+
+*   She references the "hardware lottery" paper by Sarah Hooker, which posits that some research ideas become popular not because they are inherently better, but because they are **better suited for existing hardware**.
+*   Historically, software and hardware development diverged, leading to algorithms that couldn't effectively utilize hardware or hardware that didn't support algorithms well (e.g., **capsule networks** being a brilliant idea that struggled to gain traction because they couldn't run efficiently on GPUs).
+*   Chip emphasizes that **ML engineers should understand the underlying system**. She praises companies that integrate both hardware and software development (like Apple, which builds its own chips for ML and then applications for them, and Nvidia).
+
+**5. Will the course videos for the "Machine Learning Systems Design" course be available online and publicly?**
+
+Chip states that making the course videos available online and publicly would be a **decision discussed by the entire team** involved in the course (including the hosts of the seminar) and with Stanford. As a **"huge believer in open source,"** she expressed her desire to share anything she can online.
+
+> Check out CS 329S: Machine Learning Systems Design 
