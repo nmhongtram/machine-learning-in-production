@@ -68,7 +68,7 @@ Chip introduced an **iterative process for ML production**, covering stages from
 
 *This diagram breaks down the different stages of the ML production pipeline, moving beyond just the model itself to encompass the entire lifecycle.*
 
-### 3.1. The "10 out of 10 Graph": A Blueprint for ML Production
+### 3.1. A Blueprint for ML Production <a name="part-3.1"></a>
 
 Chip's diagram is structured in layers to illustrate the complexity:
 
@@ -78,7 +78,7 @@ Chip's diagram is structured in layers to illustrate the complexity:
 
 While the diagram shows a single arrow between stages, Chip emphasizes that in reality, it's "a lot more complicated than that" with "a lot more arrows" and interconnectedness.
 
-### 3.2. Understanding the Fluid Roles: Data Science vs. ML Engineering
+### 3.2. Understanding the Fluid Roles: Data Science vs. ML Engineering <a name="part-3.2"></a>
 
 One key area of confusion Chip addresses is the distinction between Data Science and Machine Learning Engineering, noting that **roles can be very fluid across companies**.
 
@@ -87,7 +87,7 @@ One key area of confusion Chip addresses is the distinction between Data Science
 
 Chip highlights Uber as an example where data scientists generate business insights, while the ML team builds ML products, even though both share common infrastructure for data management. In contrast, Netflix has a core infra team for both data science and ML, and separate algorithm teams. This really shows that there's **no single standardization** across the industry for team structures.
 
-### 3.3. The Iterative Process Stages: A Deep Dive
+### 3.3. The Iterative Process Stages: A Deep Dive <a name="part-3.3"></a>
 
 Here's a more detailed breakdown of each stage and what happens within them:
 
@@ -119,7 +119,7 @@ Here's a more detailed breakdown of each stage and what happens within them:
     *   This final stage focuses on **integrating and managing the business impact** of the ML system.
     *   It deals with **business analysis, user experience, and governance** (e.g., who has access to what data).
 
-### 3.4. Key Insights on ML Engineering
+### 3.4. Key Insights on ML Engineering <a name="part-3.4"></a>
 
 Chip also shares some general principles:
 
@@ -137,6 +137,18 @@ She then outlined **four phases of ML adoption** that companies typically go thr
 4.  **Go with Complex ML Models:** Only after exhausting the potential of simpler models and having a robust pipeline should you consider more complex ML models.
 
 And the overarching principle of good ML system design? It has to **solve a problem**. If it doesn't, it just creates more maintenance and costs.
+
+>**Principles of good ML systems design**
+>1. It solves a problem
+>2. It's tested
+>3. It's accessible to the users
+>4. It's ethical
+>5. It's components are modular, integrated but separated
+>6. It's as simple as possible, but not simpler
+>7. It's transparent 
+>8. It allows iterative development 
+>9. It's versioned
+>10. It's documented
 
 ### Q&A Highlights: Deeper Dives <a name="part-5"></a>
 
